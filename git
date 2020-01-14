@@ -1,0 +1,49 @@
+#git廖雪峰学习笔记#
+1.准备
+mkdir file
+cd file
+git init #把这个目录变成git可以管理的仓库
+ls -ah #查看隐藏的目录
+！版本控制系统只能跟踪文本文件的改动，使用标准的UTF-8编码，防止冲突
+2.创建版本库
+第一步：git add file#添加文件到仓库
+第二步：git commit -m  “注释”#把文件提交到仓库，commit可以一次提交很多文件
+3.版本管理
+git status#查看工作空间结果
+git diff file #查看difference，哪里被修改
+git log 查看历史记录
+git log --graph(输出图) --pretty=oneline(简洁)
+git reset --hard HEAD^#查看上一个版本，HEAD -当前版本 HEAD^^ -上上个版本 HEAD~100 HEAD上100个版本
+git reset --hard 1094a #设置回到特定版本，1094a 版本号缩写
+git reflog#记录每一次命令
+git 包括工作区和版本库（repository）
+版本库=暂存区+当前分支（master）
+git checkout -- file #撤销文件的修改
+git reset HEAD file #把暂存区的修改撤销掉（unstage），重新放回工作区
+rm file #直接删除文件
+git rm file 
+git commit -m “removing test.txt”#从版本库中删除文件
+git checkout --file #把工作区的file删除，版本库中还有
+4.远程仓库
+git remote add origin git@github.com:michaelliao/learngit.git
+git push -u origin master #把本地库的文件推送上去
+git clone git@github.com:michaelliao/gitskills.git#把远程文件克隆到本地库
+5.分支管理
+git checkout -b dev #创建分支，-b切换分支
+git branch#查看当前分支
+git branch file #创建新的分支
+git merge dev #把dev的分支合到master
+准备合并dev分支，请注意--no-ff参数，表示禁用Fast forward
+git merge --no-ff -m "merge with no-ff" dev
+git branch -d dev #删除分支
+git switch -c dev #创建并切换到新的分支 
+
+
+
+
+
+
+
+
+
+
